@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="400" style="background-color: darksalmon;"></canvas>
+    <script src="CirCle.js"></script>
+    <script src="Rect.js"></script>
+
+    <script>
+        let canvas = document.getElementById('myCanvas');
+        console.log(canvas)
+        let circle4 = new CirCle(200, 150, 15, "black");
+        circle4.draw();
+
+        let rect = new Rect(200, 300, 100, 20);
+        rect.draw();
+
+        // window.addEventListener('keyup', function(event) {
+        //     let keyCode = event.code;
+        //     console.log(keyCode)
+        //     switch (keyCode) {
+        //         case "ArrowRight":
+        //             rect.moveRight();
+        //             break;
+        //         case "ArrowLeft":
+        //             rect.moveLeft();
+        //             break;
+        //     }
+        // })
+        let flag = "MoveLeft";
+
+        function gamePlay() {
+            if (rect.x == 0) {
+                flag = "MoveRight"
+            }
+
+            if (rect.x == canvas.width - rect.width) {
+                flag = "MoveLeft"
+            }
+
+            console.log(rect.x)
+            switch (flag) {
+                case "MoveLeft":
+                    rect.moveLeft();
+                    break;
+                case "MoveRight":
+                    rect.moveRight();
+            }
+        }
+
+        setInterval(gamePlay, 100);
+    </script>
+</body>
+
+</html>
