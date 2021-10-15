@@ -15,9 +15,9 @@
 
     <script>
         let canvas = document.getElementById('myCanvas');
-        console.log(canvas)
-        let circle4 = new CirCle(200, 150, 15, "black");
-        circle4.draw();
+        let ctx = canvas.getContext('2d');
+        let circle = new CirCle(200, 150, 15, "black");
+        circle.draw();
 
         let rect = new Rect(200, 300, 100, 20);
         rect.draw();
@@ -35,8 +35,17 @@
         //     }
         // })
         let flag = "MoveLeft";
+        let flagMoveCircle = "up";
 
         function gamePlay() {
+
+            // xoa toan bo green
+            clearGreen();
+
+            //ve lai toan bo cac doi tuong
+            circle.move();
+
+            // xeet va cham giua thanh ngang va vien khung hinh
             if (rect.x == 0) {
                 flag = "MoveRight"
             }
@@ -45,7 +54,7 @@
                 flag = "MoveLeft"
             }
 
-            console.log(rect.x)
+
             switch (flag) {
                 case "MoveLeft":
                     rect.moveLeft();
@@ -56,6 +65,10 @@
         }
 
         setInterval(gamePlay, 100);
+
+        function clearGreen() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
     </script>
 </body>
 

@@ -15,13 +15,11 @@ class Rect {
     }
 
     moveLeft() {
-        this.ctx.clearRect(this.x, this.y, this.width, this.height);
         this.x -= 5;
         this.draw();
     }
 
     moveRight() {
-        this.ctx.clearRect(this.x, this.y, this.width, this.height);
         this.x += 5;
         this.draw();
     }
